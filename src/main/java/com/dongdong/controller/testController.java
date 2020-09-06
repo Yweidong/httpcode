@@ -3,6 +3,7 @@ package com.dongdong.controller;
 import com.dongdong.annotation.ResponseBody;
 import com.dongdong.annotation.ResponseResultBody;
 import com.dongdong.common.Result;
+import com.dongdong.common.ResultStatus;
 import com.dongdong.exception.ResultException;
 import com.dongdong.utils.RedisUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,9 +54,10 @@ public class testController {
         return Result.success();
     }
     @GetMapping("/exception")
-    public HashMap<Object, Object> exce() {
+    public HashMap<Object, Object> exce() throws ResultException {
 
-      throw new ResultException();
+      throw new ResultException(ResultStatus.BAD_REQUEST,"cuowu");
+
 
     }
 }

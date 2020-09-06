@@ -65,7 +65,7 @@ public class ResponseAdvice implements ResponseBodyAdvice<Object> {
 
     /** 对ResultException类返回返回结果的处理 */
     protected ResponseEntity<Result<?>> handleResultException(ResultException ex, HttpHeaders headers, WebRequest request) {
-        Result<?> body = Result.failure(ex.getResultStatus());
+        Result<?> body = Result.failure(ex.getResultStatus(),ex.getMessage());
         HttpStatus status = ex.getResultStatus().getHttpStatus();
         return this.handleExceptionInternal(ex, body, headers, status, request);
     }

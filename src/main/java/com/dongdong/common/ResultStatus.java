@@ -5,8 +5,7 @@ import lombok.Setter;
 import lombok.ToString;
 import org.springframework.http.HttpStatus;
 
-@ToString
-@Getter
+
 public enum ResultStatus {
     SUCCESS(HttpStatus.OK,200,"ok"),
     BAD_REQUEST(HttpStatus.BAD_REQUEST, 400, "Bad Request"),
@@ -17,10 +16,47 @@ public enum ResultStatus {
     private Integer code;
     /** 业务异常信息描述 */
     private String message;
+
+
+
     ResultStatus(HttpStatus httpStatus, Integer code, String message) {
         this.httpStatus = httpStatus;
         this.code = code;
         this.message = message;
     }
 
+
+
+    public HttpStatus getHttpStatus() {
+        return httpStatus;
+    }
+
+    public void setHttpStatus(HttpStatus httpStatus) {
+        this.httpStatus = httpStatus;
+    }
+
+    public Integer getCode() {
+        return code;
+    }
+
+    public void setCode(Integer code) {
+        this.code = code;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    @Override
+    public String toString() {
+        return "ResultStatus{" +
+                "httpStatus=" + httpStatus +
+                ", code=" + code +
+                ", message='" + message + '\'' +
+                '}';
+    }
 }

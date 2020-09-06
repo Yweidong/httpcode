@@ -10,8 +10,7 @@ import lombok.ToString;
  * @contact:1371690483@qq.com
  * @create: 2020-09-05 11:31
  **/
-@Getter
-@ToString
+
 public class Result<T> {
     /** 业务错误码 */
     private Integer code;
@@ -60,5 +59,38 @@ public class Result<T> {
             return new Result<T>(ResultStatus.INTERNAL_SERVER_ERROR, null);
         }
         return new Result<T>(resultStatus, data);
+    }
+
+    public Integer getCode() {
+        return code;
+    }
+
+    public void setCode(Integer code) {
+        this.code = code;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public T getData() {
+        return data;
+    }
+
+    public void setData(T data) {
+        this.data = data;
+    }
+
+    @Override
+    public String toString() {
+        return "Result{" +
+                "code=" + code +
+                ", message='" + message + '\'' +
+                ", data=" + data +
+                '}';
     }
 }

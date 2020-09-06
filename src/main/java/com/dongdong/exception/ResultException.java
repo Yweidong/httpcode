@@ -1,24 +1,43 @@
 package com.dongdong.exception;
 
-import com.dongdong.common.Result;
 import com.dongdong.common.ResultStatus;
+import org.springframework.http.HttpStatus;
 
 /**
- * @program: httpcode
- * @description:
- * @author: ywd
- * @contact:1371690483@qq.com
- * @create: 2020-09-05 16:43
- **/
+ * @Auther: 杨伟栋
+ * @Date: 2020/9/6 11:36
+ * @Description: 1371690483@qq.com
+ */
 public class ResultException  extends RuntimeException{
     private ResultStatus resultStatus;
+    private String message;
 
+    public ResultException(ResultStatus resultStatus, String message) {
+        this.resultStatus = resultStatus;
+        this.message = message;
+    }
+
+    @Override
+    public String toString() {
+        return "ResultException{" +
+                "resultStatus=" + resultStatus +
+                ", message='" + message + '\'' +
+                '}';
+    }
 
     public ResultStatus getResultStatus() {
-        return resultStatus.BAD_REQUEST;
+        return resultStatus;
     }
 
     public void setResultStatus(ResultStatus resultStatus) {
         this.resultStatus = resultStatus;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }
